@@ -4,7 +4,7 @@ defmodule Helloworld.Mixfile do
   def project do
     [app: :helloworld,
      version: "0.1.0",
-     elixir: "~> 1.4",
+     elixir: "~> 1.10",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
      deps: deps()]
@@ -12,7 +12,7 @@ defmodule Helloworld.Mixfile do
 
   def application do
     [mod: {HelloworldApp, []},
-     applications: [:logger, :grpc]]
+     applications: [:grpc]]
   end
 
   defp deps do
