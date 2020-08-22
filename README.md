@@ -1,4 +1,26 @@
-![CI](https://github.com/LesnyRumcajs/grpc_bench/workflows/CI/badge.svg)
+After removing the logger from the elixir_grpc_bench, and by using these settings,
+
+|**Name**|**Description**|**Default value**|
+|--------|---------------|:---------------:|
+|GRPC_BENCHMARK_DURATION|Duration of the benchmark.|120s|
+|GRPC_REQUEST_PAYLOAD|File (from [payload/](payload/)) containing the data to be sent in the client request.|100B|
+|GRPC_SERVER_RAM|Maximum memory used by the server.|4096m|
+|GRPC_CLIENT_CONNECTIONS|Number of connections to use.|5|
+|GRPC_CLIENT_CONCURRENCY|Number of requests to run concurrently. It can't be smaller than the number of connections.|50|
+|GRPC_CLIENT_QPS|Rate limit, in queries per second (QPS).|0 (*unlimited*)|
+
+and running in Docker, on a laptop, with Windows 10 Pro, with
+Processor	Intel(R) Xeon(R) CPU E3-1505M v6 @ 3.00GHz, 3001 Mhz, 4 Core(s), 8 Logical Processor(s),
+
+I got these results:
+
+|**name**|**req/s**|**avg. latency**|**90 % in**|**95 % in**|**99 % in**|**avg. cpu**|**avg. memory**|
+|------------|---------|----------------|-----------|-----------|-----------|------------|:-------------:|
+|GRPC_SERVER_CPUS=8 GRPC_CLIENT_CPUS=8|10353|4.75 ms|6.92 ms|8.17 ms|11.53 ms|544.78%|66.33 MiB|
+|GRPC_SERVER_CPUS=4 GRPC_CLIENT_CPUS=4|8867|5.57 ms|7.01 ms|23.75 ms|34.25 ms|405.27%|65.38 MiB|
+|GRPC_SERVER_CPUS=2 GRPC_CLIENT_CPUS=2|4195|11.84 ms|64.42 ms|68.17 ms|78.62 ms|199.42%|66.47 MiB|
+
+-----------------------
 
 One repo to finally have a clear, objective gRPC benchmark with code for everyone to verify and improve.
 
