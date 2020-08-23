@@ -12,7 +12,7 @@ After removing the logger from the elixir_grpc_bench, and by using these setting
 and running in Docker, on a laptop, with Windows 10 Pro, with
 Processor	Intel(R) Xeon(R) CPU E3-1505M v6 @ 3.00GHz, 3001 Mhz, 4 Core(s), 8 Logical Processor(s),
 
-I got these results:
+I got these results for elixir_grpc_bench:
 
 |**name**|**req/s**|**avg. latency**|**90 % in**|**95 % in**|**99 % in**|**avg. cpu**|**avg. memory**|
 |------------|---------|----------------|-----------|-----------|-----------|------------|:-------------:|
